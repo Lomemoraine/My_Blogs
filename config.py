@@ -1,6 +1,7 @@
 class Config:
     
-    random_quote='http://quotes.stormconsultancy.co.uk/random.json'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lorraine:gift1234@localhost/blog'
+    SQLALCHEMY_TRACK_MODIFICATIONS=True
     pass
     
 class ProdConfig(Config):
