@@ -17,3 +17,8 @@ class UpdatePostForm(FlaskForm):
     post_title = StringField("Blog title", validators=[DataRequired()])
     post_content = TextAreaField("Type Away", validators=[DataRequired()])
     submit = SubmitField("Update Blog")
+    
+class CommentForm(FlaskForm):
+    comment = TextAreaField("Blog Comment", validators=[DataRequired()])
+    alias = StringField("Comment Alias")# to hide user's identity
+    submit = SubmitField("Comment")

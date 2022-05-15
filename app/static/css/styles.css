@@ -12,3 +12,9 @@ body{
 .iconn{
     color: white;
 }
+.marginn{
+   margin: left 300px;
+}
+.post-preview{
+    margin-left: 40%;
+}

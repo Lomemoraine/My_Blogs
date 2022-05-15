@@ -1,5 +1,5 @@
 {% extends 'base.html'%}
-{% import 'macros.html' as macro %}
+
 {% block content %}
 <h1 class="text-info text-center">Raine Blogs</h1>
 <div class="container quoting">
@@ -10,10 +10,20 @@
       </div>
 </div>
 <div class="containerfluid">
-  <h1>My Blogs</h1>
-  {{ macro.displayBlogs(posts) }}
+  <h1 class="text-center">My Blogs</h1>
+  <!-- Main Content -->
 
-  
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      {%for post in posts%}
+      <div class="post-preview">
+        <a href="{{url_for('main.post', id = post.id)}}"><h2 class="post-title">{{post.post_title}}</h2></a>
+          <h3 class="post-subtitle">{{post.post_content  | safe}}</h3>
+        
+        <p class="post-meta">Posted by{{post.post_author}} on {{post.posted_at.strftime('%B %d, %Y')}}</p>
+      </div>
+   {%endfor%}
+    </div>
+ 
 </div>
-
 {% endblock%} 
