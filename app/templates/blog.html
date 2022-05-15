@@ -9,8 +9,8 @@
                     <h1>{{post.post_title}}</h1>
                     <div class="content">
                         {{post.post_content | safe}}
-                    </div>
-                    <span class="meta">Posted by {{post.user.username}}
+                    </div><br>
+                    <span class="meta italic">Posted by {{post.user.username}}
                         
                         on {{post.posted_at.strftime('%B %d, %Y')}}
                     </span><br>
@@ -58,7 +58,7 @@
                                         <a href="{{url_for('main.fav_comment', id = post.id, comment_id = comment.id)}}" class="float-right btn text-white btn-success"> <i class="fa fa-heart"></i>
                                             {{comment.count_likes}}</a>
                                         {%else%}
-                                        <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i>
+                                        <a href="{{url_for('main.fav_comment', id = post.id, comment_id = comment.id)}}" class="float-right btn text-white btn-success"> <i class="fa fa-heart"></i>
                                             {{comment.count_likes}}</a>
                                         {%endif%}
                                         {%if current_user.is_authenticated%}
@@ -76,9 +76,9 @@
                     <div class="make-comment">
                         <form class="form-group mt-2" method="POST">
                             {{comment_form.hidden_tag()}}
-                            {{comment_form.alias(class = "form-control", placeholder = "Enter a nickname")}}
+                            {{comment_form.alias(class = "form-control", placeholder = "Enter your name to comment")}}
                             <br>
-                            {{comment_form.comment(class = "form-control", placeholder = "Write a comment")}}
+                            {{comment_form.comment(class = "form-control", placeholder = "Leave a comment")}}
 
                             <div class="text-right" style="margin-top: 10px;">
                                 {{comment_form.submit(class = "btn btn-outline-dark btn-sm")}}
@@ -88,7 +88,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-2"></div>
+        <div class="col-md-2"></div>
     </div>
 
     </div>

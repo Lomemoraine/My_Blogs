@@ -24,7 +24,7 @@ def index():
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
-    posts = Post.query.filter_by(user_id = id).all()
+    posts = Post.query.filter_by(user_id = user.id).all()
     if user is None:
         abort(404)
 
@@ -89,6 +89,7 @@ def delete_comment(id, comment_id):
     return redirect(url_for("main.post", id = post.id))
 
 @main.route("/post/<int:id>/<int:comment_id>/favourite")
+@login_required
 def fav_comment(id, comment_id):
     post = Post.query.filter_by(id = id).first()
     comment = Comment.query.filter_by(id = comment_id).first()
