@@ -3,7 +3,7 @@ class Config:
     SECRET_KEY ='lorraine'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lorraine:gift1234@localhost/blog'
     SQLALCHEMY_TRACK_MODIFICATIONS=True
-    
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587

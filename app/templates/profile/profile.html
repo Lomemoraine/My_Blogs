@@ -37,8 +37,8 @@
       <p class="bio"> {{user.bio}}</p>
       <a class="edit" href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
     {%else%}
-      <p> {{user.username| capitalize}} has no bio </p>
-      <a class="edit" href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+      <p> {{user.username| capitalize}} please update your bio </p>
+      <a  href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
     {% endif %}
   </div>
 </div><br>
