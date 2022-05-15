@@ -1,12 +1,15 @@
-from flask import request,json
+from urllib import response
+import requests,json
 from .models import Quote
-url = "http://quotes.stormconsultancy.co.uk/random.json"
+
+
+random_quote = 'http://quotes.stormconsultancy.co.uk/random.json'
+print(random_quote)
 
 def get_quote():
     """
     Function to consume http request and return a Quote class instance
     """
-    response = request.args.get(url).json()
-
-    random_quote = Quote(response.get("author"), response.get("quote"))
-    return random_quote
+    response = requests.get(random_quote).json()
+    quote = Quote(response.get("author"),response.get("quote"))
+    return quote
