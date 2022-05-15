@@ -1,4 +1,6 @@
 class Config:
+    
+    random_quote='http://quotes.stormconsultancy.co.uk/random.json'
     pass
     
 class ProdConfig(Config):
