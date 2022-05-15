@@ -1,7 +1,7 @@
 import unittest
 from app.models import Post, User, Comment
 
-class TestPost(unittest.TestCase):
+class TestComment(unittest.TestCase):
     def setUp(self):
         self.new_user = User(first_name='Lorraine',last_name='simotwo',username='raine',pass_secure='1234',email='simotwo@gmail.com')
         self.new_post = Post(post_title='unittests',post_content='learning on python flask unittest models',user_id=self.new_user.id)
