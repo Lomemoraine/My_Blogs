@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
 from ..requests import get_quote
-from ..models import User
+from ..models import User,Post,Comment,Subscribe
 from .forms import UpdateProfile
 from .. import db,photos
 from flask_login import login_required,current_user
@@ -15,8 +15,9 @@ def index():
     View root page function that returns the index page and its data
     '''
     quote = get_quote()
+    posts = Post.get_all_posts()
     title = "Home _ Welcome to family news Hub"
-    return render_template('index.html',title = title,quote=quote)
+    return render_template('index.html',title = title,quote=quote,posts=posts)
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -56,3 +57,11 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+# @main.route("/post/<int:id>", methods = ["POST", "GET"])
+# def post(id):
+#     post = Post.query.filter_by(id = id).first()
+    
+
+
+#     return render_template(".html", post = post,)
