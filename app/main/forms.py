@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, SubmitField,StringField
-from wtforms.validators import InputRequired,DataRequired
+from wtforms.validators import InputRequired,DataRequired,Email
 
 from wtforms import ValidationError
 
@@ -22,3 +22,7 @@ class CommentForm(FlaskForm):
     comment = TextAreaField("Blog Comment", validators=[DataRequired()])
     alias = StringField("Comment Alias")# to hide user's identity
     submit = SubmitField("Comment")
+    
+class SubscriptionForm(FlaskForm):
+    email = StringField('Enter your Email Address',validators=[InputRequired(),Email()])
+
