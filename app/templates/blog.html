@@ -1,8 +1,8 @@
 {% extends 'base.html'%}
 {% block content %}
-<header class="masthead" style="background-image: url('https://picsum.photos/1900/1267?grayscale'); margin-top: 40px;">
-    <div class="overlay"></div>
-    <div class="container">
+
+    
+    <div class="container quoting">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="post-heading">
@@ -23,17 +23,17 @@
             </div>
         </div>
     </div>
-</header>
+
 
 <!-- Comment section -->
 <section>
     <div class="container">
         <div class="row">
-          >
-            <div class="col-lg-8">
-                <h2>Comments</h2>
+          
+            <div class="col-md-8">
+                <h2 class="text-center">Comments</h2>
             </div>
-            <div class="col-lg-2"></div>
+            <div class="col-md-2"></div>
         </div>
         <div class="row">
             <div class="col-lg-2"></div>
@@ -55,11 +55,11 @@
                                     <p>{{comment.comment}}</p>
                                     <div style="margin-right: 10px;">
                                         {%if current_user.is_authenticated%}
-                                        <a href="{{url_for('main.fav_comment', id = post.id, comment_id = comment.id)}}" class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i>
-                                            {{comment.like_count}}</a>
+                                        <a href="{{url_for('main.fav_comment', id = post.id, comment_id = comment.id)}}" class="float-right btn text-white btn-success"> <i class="fa fa-heart"></i>
+                                            {{comment.count_likes}}</a>
                                         {%else%}
                                         <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i>
-                                            {{comment.like_count}}</a>
+                                            {{comment.count_likes}}</a>
                                         {%endif%}
                                         {%if current_user.is_authenticated%}
                                         <a href="{{url_for('main.delete_comment', id = post.id, comment_id = comment.id)}}" class="btn text-white btn-danger"> <i
