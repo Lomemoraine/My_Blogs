@@ -7,10 +7,13 @@
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="post-heading">
                     <h1>{{post.post_title}}</h1>
-                    <span class="meta">Posted by
-                        <a href="{{url_for('main.profile', id = post.user_id)}}">{{post.post_by}}</a>
+                    <div class="content">
+                        {{post.post_content | safe}}
+                    </div>
+                    <span class="meta">Posted by {{post.user.username}}
+                        
                         on {{post.posted_at.strftime('%B %d, %Y')}}
-                    </span>
+                    </span><br>
                     {%if comment_count == 1%}
                         <small>{{comment_count}} comment</small>
                     {%else%}
@@ -21,24 +24,12 @@
         </div>
     </div>
 </header>
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="content">
-                    {{post.post_content | safe}}
-                </div>
-            </div>
-        </div>
-    </div>
-</article>
-<hr>
+
 <!-- Comment section -->
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-2"></div>
+          >
             <div class="col-lg-8">
                 <h2>Comments</h2>
             </div>
@@ -53,15 +44,14 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-2 col-sm-2 col-xs-2">
-                                    <img src="https://image.ibb.co/jw55Ex/def_face.jpg"
-                                        class="img img-rounded img-fluid" />
-                                    <p class="text-secondary text-center">{{comment.comment_at.strftime('%B %d, %Y')}}</p>
+                                    
+                                    <p class="text-secondary text-center">{{comment.comment_on.strftime('%B %d, %Y')}}</p>
                                 </div>
                                 <div class="col-md-10">
                                     <div>
-                                        <strong>{{comment.comment_by}}</strong>
+                                        <strong>Comments from: {{comment.comment_by}}</strong>
                                     </div>
-                                    <div class="clearfix"></div>
+                                   
                                     <p>{{comment.comment}}</p>
                                     <div style="margin-right: 10px;">
                                         {%if current_user.is_authenticated%}

@@ -20,7 +20,7 @@
         <a href="{{url_for('main.post', id = post.id)}}"><h2 class="post-title">{{post.post_title}}</h2></a>
           <h3 class="post-subtitle">{{post.post_content  | safe}}</h3>
         
-        <p class="post-meta">Posted by{{post.post_author}} on {{post.posted_at.strftime('%B %d, %Y')}}</p>
+        <p class="post-meta">Posted by {{post.user.username}} on {{post.posted_at.strftime('%B %d, %Y')}}</p>
       </div>
    {%endfor%}
     </div>
