@@ -18,3 +18,6 @@ body{
 .post-preview{
     margin-left: 40%;
 }
+.myposts{
+    background-color: rgba(128, 128, 128, 0.5);
+}

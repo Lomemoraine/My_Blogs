@@ -42,12 +42,12 @@
     {% endif %}
   </div>
 </div><br>
-<div class="row myposts">
+<div class="row ">
   <h2 class="text-center"> My Blogs</h2>
   <div class="col-md-9">
             <div class="profile-content">
                 {%for post in posts[::-1]%}
-                <div class="post-preview">
+                <div class="post-preview myposts">
                     {%if current_user.is_authenticated%}
                     <div style="float: right; padding-bottom: 50px">
                         <a href="{{url_for('main.edit_post', id = post.id)}}" class="btn btn-outline-success btn-md"><i class="far fa-edit"></i></a>
