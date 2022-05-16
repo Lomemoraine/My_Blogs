@@ -7,10 +7,11 @@ from .. import db,photos
 from flask_login import login_required,current_user
 from datetime import datetime
 import bleach
+from ..emaill import thanks_message
 
 
 #views
-@main.route('/')
+@main.route("/", methods = ["GET", "POST"])
 def index():
 
     '''
@@ -18,6 +19,12 @@ def index():
     '''
     quote = get_quote()
     posts = Post.get_all_posts()
+    if request.method == "POST":
+        new_sub = Subscribe(email = request.form.get("subscriber"))
+        db.session.add(new_sub)
+        db.session.commit()
+        thanks_message("Thank you for subscribing to Raine  blogs", 
+                        "email/thanks_user", new_sub.email)
     title = "Home _ Welcome to family news Hub"
     return render_template('index.html',title = title,quote=quote,posts=posts)
 
@@ -143,3 +150,18 @@ def delete_post(id, post_id):
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for("main.profile", id = user.id))
+
+# @main.route('/subcribe',methods = ["GET","POST"])
+# def subscribe():
+#     form = SubscriptionForm()
+    
+#     if form.validate_on_submit():
+#         user = Subscribe(email = form.email.data)
+#         db.session.add(user)
+#         db.session.commit()
+
+#         thanks_message("You have successfully subscribed to Raine Blogs","email/thanks_user",user.email,user=user)
+
+#         return redirect(url_for('main.index'))
+        
+#     return render_template('subcription/subscribe.html',subscription_form = form)
