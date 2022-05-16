@@ -144,30 +144,18 @@ def new_post():
             notification_message(post_title, 
                             "email/notification", sub.email, new_post = new_post)
             pass
-        return redirect(url_for("main.post", id = new_post.id))
+        return redirect(url_for("main.index", id = new_post.id))
         
     return render_template("new_blog.html",post_form = post_form)
 
 @main.route("/profile/<int:id>/<int:post_id>/delete")
 @login_required
 def delete_post(id, post_id):
+    
     user = User.query.filter_by(id = id).first()
     post = Post.query.filter_by(id = post_id).first()
     db.session.delete(post)
     db.session.commit()
-    return redirect(url_for("main.profile", id = user.id))
+    return redirect(url_for("main.index", user = user.id))
 
-# @main.route('/subcribe',methods = ["GET","POST"])
-# def subscribe():
-#     form = SubscriptionForm()
-    
-#     if form.validate_on_submit():
-#         user = Subscribe(email = form.email.data)
-#         db.session.add(user)
-#         db.session.commit()
 
-#         thanks_message("You have successfully subscribed to Raine Blogs","email/thanks_user",user.email,user=user)
-
-#         return redirect(url_for('main.index'))
-        
-#     return render_template('subcription/subscribe.html',subscription_form = form)

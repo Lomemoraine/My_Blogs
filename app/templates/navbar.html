@@ -19,7 +19,12 @@
                 <li style="color:white;padding:15px;">{{current_user.username}}</li>
                 <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
                 {% else %}
+                <li><form class="form-inline " method="POST">
+                    <input class="form-control " type="email" placeholder="Email" name="subscriber" required>
+                    <button class="btn btn-outline-info btn-sm" type="submit" style="padding: 8px;">Subscribe</button>
+                  </form></li>
                 <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+                
                 {%endif%}
               </ul>
         </div>
