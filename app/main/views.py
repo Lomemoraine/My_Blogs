@@ -7,7 +7,7 @@ from .. import db,photos
 from flask_login import login_required,current_user
 from datetime import datetime
 import bleach
-from ..emaill import thanks_message
+from ..emaill import thanks_message,notification_message
 
 
 #views
@@ -139,6 +139,12 @@ def new_post():
         post_form.post_content.data = ""
         new_post = Post(post_title = post_title,post_content = post_content,posted_at = datetime.now(),post_by = current_user.username,user_id = current_user.id)
         new_post.save_post()
+        subs = Subscribe.query.all()
+        for sub in subs:
+            notification_message(post_title, 
+                            "email/notification", sub.email, new_post = new_post)
+            pass
+        return redirect(url_for("main.post", id = new_post.id))
         
     return render_template("new_blog.html",post_form = post_form)
 

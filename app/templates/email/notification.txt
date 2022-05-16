@@ -1,0 +1,5 @@
+
+  
+Hello Subscriber, a new blog post by  has been made in Raine Blogs, head over to the blog to view it.
+
+{{user_fname}} {{user_lname}}.
