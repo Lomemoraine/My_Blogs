@@ -42,8 +42,8 @@
 * Open in your preferred IDE(Vs Code ,Pycharm,atom)
 ### Running the Application
 * To run the application, open the cloned file in terminal and run the following commands:
-       **$ chmod +x start.sh**
-        **$ ./start.sh**
+       *  ```$ chmod +x start.sh```
+        * ```$ ./start.sh```
 ## Behaviour Driven Development
 * A user sees a landing page with a button to create posts,sign in and a form to leave email for subscription.
 * A user can see posted blogs on the landing page.
