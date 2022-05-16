@@ -73,7 +73,7 @@ class Post(db.Model):
     
     @classmethod
     def get_all_posts(cls):
-        return Post.query.order_by(Post.posted_at).all()
+        return Post.query.order_by(Post.posted_at.desc()).all()
     
     def __repr__(self):
         return f"Post Title: {self.post_title}"
